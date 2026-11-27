@@ -1,0 +1,8 @@
+Python 3.10 o superior
+Pillow >= 10
+
+Solo para crear el ejecutable de Windows:
+PyInstaller >= 6
+
+Instalacion manual:
+  python -m pip install "Pillow>=10"

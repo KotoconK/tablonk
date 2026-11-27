@@ -1,0 +1,114 @@
+TablonK Advance v4.1.0
+======================
+
+NOVEDADES DE LA 4.1
+- Calendario: un clic en un evento abre la pestaña Eventos con ese evento
+  seleccionado y su contenido a la vista.
+- Eventos: la zona derecha se divide en dos (arrastra la separacion para
+  cambiar el reparto). Arriba la lista; abajo el evento seleccionado con
+  sus datos, notas y adjuntos, en solo lectura. Seleccionar un evento ya
+  NO abre la edicion: se edita con el boton Editar (o F2).
+- Notas con formato en la ficha del evento:
+  * Negrita, cursiva, subrayado y tachado (Ctrl+B, Ctrl+I, Ctrl+U).
+  * Titulo y subtitulo.
+  * Listas con viñetas y numeradas (Enter continua la lista; Enter en un
+    elemento vacio la termina).
+  * Enlaces a webs, correos, archivos o carpetas (Ctrl+K). En la ficha se
+    abren con Ctrl+clic; en el panel de detalle, con un clic.
+  * Imagenes desde archivo o pegando una captura con Ctrl+V. Clic derecho
+    sobre una imagen: abrir, cambiar tamaño o quitar.
+  * Adjuntos: cualquier tipo de documento. Se abren con un clic desde el
+    panel de detalle; clic derecho para mostrarlo en su carpeta.
+- Imagenes y adjuntos se copian a assets/eventos/ dentro de la carpeta del
+  proyecto, asi el proyecto se puede mover entero. Quitar un adjunto o
+  borrar un evento no borra el archivo de esa carpeta.
+- El buscador de Eventos tambien encuentra por nombre de adjunto y por
+  direccion de enlace.
+- Los eventos con notas de la 4.0 se abren igual (texto sin formato).
+
+NOVEDADES DE LA 4.0
+- Nuevo nombre: TablonK Advance.
+- Calendario: vistas de dia, semana, mes y año. Los eventos se pintan con
+  el color de su tipo. Clic en un evento para editarlo; doble clic en un
+  hueco para crear uno (en dia/semana, a esa hora). Filtro por tipo.
+- Eventos: tabla con barra lateral.
+  * Buscador (sin importar tildes). Ctrl+F lo activa.
+  * Filtro por tipo (clic: mostrar/ocultar; clic derecho: solo ese tipo),
+    por prioridad y opcion de ocultar hechos y cancelados.
+  * Eventos fijados siempre visibles en la barra lateral.
+  * Columnas personalizables: mostrar, ocultar, renombrar, ordenar y crear
+    columnas propias (aparecen como campos en la ficha del evento).
+  * Ficha de edicion con nombre, tipo, prioridad, estado, fechas, horas,
+    notas y campos propios. Su fondo toma el color del tipo.
+  * Editor de tipos: crear, renombrar, cambiar color y borrar. Vienen de
+    serie "Entrega cliente" y "Presentacion propuesta".
+  * Ctrl+N crea un evento desde Calendario o Eventos.
+- Todos los mensajes (eliminar nota, quitar proyecto, avisos de la
+  pizarra...) aparecen centrados en la pantalla donde esta la ventana.
+  Los selectores de color, archivos y carpetas tambien se centran.
+- Iconos minimalistas dibujados por la propia aplicacion en lugar de
+  simbolos Unicode.
+- Actualizaciones desde GitHub: Configuracion (icono de engranaje) >
+  Actualizaciones. Puede comprobarlo al iniciar y avisa con un boton en la
+  barra de pestañas cuando hay una version nueva.
+
+TUS DATOS
+- Siguen en el mismo config.json de cada proyecto. Los eventos se añaden
+  dentro de ese archivo; las notas y pizarras no cambian.
+- Los proyectos de versiones anteriores se abren sin conversion.
+- Las actualizaciones nunca tocan config.json, tablonk_proyectos.json,
+  tablonk_ajustes.json ni las carpetas assets.
+
+INSTALACION SI USAS EL EXE DE WINDOWS
+1. Cierra TablonK y haz copia de seguridad de config.json,
+   tablonk_proyectos.json y las carpetas assets.
+2. Descomprime este ZIP en la carpeta donde estaba TablonK.exe.
+3. Ejecuta crear_exe.bat (requiere Python e internet). Genera
+   TablonKAdvance.exe en la misma carpeta.
+4. Abre TablonKAdvance.exe. Puedes borrar el antiguo TablonK.exe.
+   A partir de aqui, las siguientes versiones se instalan desde
+   Configuracion > Actualizaciones.
+
+INSTALACION SI EJECUTAS PYTHON
+- Copia todos los .py, tablonk.ico y los .bat sobre la carpeta actual y
+  abre con iniciar_python.bat. Requiere Pillow (ver REQUISITOS.txt).
+
+PUBLICAR UNA VERSION EN GITHUB (KotoconK/tablonk)
+1. Sube el contenido de este ZIP al repositorio (incluida la carpeta
+   oculta .github). El .gitignore ya excluye tus datos y los .exe.
+2. Cambia APP_VERSION en version.py, por ejemplo "4.0.1", y haz commit.
+3. Crea y sube la etiqueta:  git tag v4.0.1   y   git push origin v4.0.1
+4. GitHub Actions compila TablonKAdvance.exe en Windows y crea la release
+   con TablonKAdvance.exe y TablonKAdvance-src.zip. Tarda unos minutos.
+5. Las copias instaladas veran "v4.0.1" en Configuracion > Actualizaciones
+   y podran descargarla e instalarla.
+Para publicar esta version usa la etiqueta v4.1.0 (la version actual).
+Si el repositorio es privado, la app no podra consultar las releases:
+debe ser publico.
+
+COMO FUNCIONA LA ACTUALIZACION
+- Consulta la ultima release publicada del repositorio indicado.
+- EXE: descarga TablonKAdvance.exe, comprueba su huella SHA-256 (si GitHub
+  la publica), renombra el exe actual a .old, coloca el nuevo y reinicia.
+  El .old se borra en el siguiente inicio.
+- Python: descarga TablonKAdvance-src.zip, guarda una copia de tus .py en
+  _copia_vX.Y.Z y sustituye el codigo.
+
+ATAJOS
+- Ctrl+S guardar ahora. Ctrl+N nuevo evento (Calendario/Eventos).
+- Ctrl+F buscar en Eventos. Supr elimina el evento seleccionado.
+- F2 edita el evento seleccionado. Rueda en la vista mes: cambiar mes.
+- Pizarra: igual que antes (Ctrl+Z/Y, Ctrl+C/V, Supr, Ctrl+rueda).
+
+PRUEBAS REALIZADAS
+- Arranque con un config.json de la version 3.1 (notas, tareas y pizarra
+  intactas; los eventos empiezan vacios con los dos tipos de serie).
+- Vistas de dia, semana, mes y año con eventos de un dia, de varios dias,
+  con hora y solapados; tabla con busqueda, filtros y fijados; ficha de
+  edicion, editor de tipos y de columnas; tema claro y oscuro.
+- Descarga con verificacion SHA-256 e instalacion del zip de codigo
+  sobre una carpeta de prueba (sin tocar config.json).
+- Las pruebas se hicieron en Linux con pantalla virtual. No se ha podido
+  compilar ni probar aqui el EXE de Windows ni la sustitucion del .exe;
+  la primera release confirmara ese paso. Si algo falla, ejecuta
+  "python tablonk.py" desde una consola y comparte el error.
